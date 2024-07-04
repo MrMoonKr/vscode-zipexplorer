@@ -55,7 +55,7 @@
       },
       {
         "command": "zipexplorer.clear",
-        "title": "Clear view"
+        "title": "Clear View"
       },
       {
         "command": "openZipResource",
@@ -110,6 +110,15 @@
         }
       ]
     },
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "zip-explorer",
+          "title": "ZipExplorer",
+          "icon": "resources/other-container.png"
+        }
+      ]
+    },
     "views": {
       "explorer": [
         {
@@ -127,7 +136,7 @@
   "devDependencies": {
     "@types/adm-zip": "^0.4.31",
     "@types/mkdirp": "^0.3.29",
-    "@types/node": "^6.0.40",
+    "@types/node": "^20.12.12",
     "typescript": "^2.3.4",
     "vscode": "^1.1.0"
   },

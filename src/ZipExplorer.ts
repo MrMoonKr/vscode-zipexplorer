@@ -14,22 +14,38 @@ import { IZipNode, treeFromPaths} from './ZipNode';
 
 const joinPath = require('path.join');
 
+
+/**
+ * single zip file manager
+ */
 export class ZipRoot implements IZipNode {
+
+    /**
+     * unzip module
+     */
     private _zip: AdmZip;
+    /**
+     * tree of archived files
+     */
     private _tree: IZipNode;
 
     constructor(private _uri: Uri) {
-        try {
+        try 
+        {
             this._zip = new AdmZip(this._uri.fsPath);
+
             let files = [];
+
             this._zip.getEntries()
                 .sort((a,b) => a.entryName.localeCompare(b.entryName))
                 .forEach(e => {
                     files.push(e.entryName);
                 });
+                
             this._tree = treeFromPaths(files, _uri, 
                 path.basename(this._uri.fsPath))
-        } catch (e) {
+        } 
+        catch (e) {
             window.showErrorMessage(e.toString());
         }
     }
@@ -113,7 +129,7 @@ export class ZipModel {
             setTimeout( () => {
                 this.extractElement(element, folderUri);
                 window.showInformationMessage('Extraction done!');
-                resolve()
+                resolve( "" );
             }, 0);
         });
     }
